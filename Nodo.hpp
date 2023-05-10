@@ -1,15 +1,15 @@
 class Nodo {
 private:
     int Nota;
-    int J;
-    int I;
+    int Alumno;
+    int Ramo ;
     Nodo* up;
     Nodo* left;
     Nodo* siguiente;
    
 public:
-    Nodo(int Nota, int J, int I) {
-        this->Nota = Nota;
+    Nodo(int Nota, int Alumno, int Ramo) {
+        this-> Nota = Nota;
         up = nullptr;
         left = nullptr;
         siguiente = nullptr;
@@ -17,11 +17,11 @@ public:
     int getNota() {
         return Nota;
     }
-    int getJ() {
-        return J;
+    int getAlumno() {
+        return Alumno;
     }
-    int getI() {
-        return I;
+    int getRamo() {
+        return Ramo;
     }
     Nodo* getUp() {
         return up;
@@ -43,22 +43,36 @@ public:
     }  
 
     Nodo setNota(int Nota) {
-        this->Nota = Nota;
+        this-> Nota = Nota;
     }
-    Nodo setJ(int J) {
-        this->J = J;
+    Nodo setAlumno(int Alumno) {
+        this->Alumno = Alumno;
     }
-    Nodo setI(int I) {
-        this->I = I;
+    Nodo setI(int Ramo) {
+        this->Ramo = Ramo;
     }
     
 };
-void agregarNodo(Nodo* nodo, int Nota, int J, int I) {
+void agregarNodo(Nodo* nodo, int Nota, int Alumno, int Ramo) {
     if (nodo->getSiguiente() == nullptr) {
-        Nodo* nuevo = new Nodo(Nota, J, I);
+        Nodo* nuevo = new Nodo (Nota, Alumno, Ramo);
         nodo->setSiguiente(nuevo);
         return;
     }else {
-        agregarNodo(nodo->getSiguiente(), Nota, J, I);
+        agregarNodo(nodo->getSiguiente(), Nota, Alumno, Ramo);
+    }
+}
+void eliminarNodo(Nodo* nodo, int Nota, int Alumno, int Ramo) {
+    if (nodo->getSiguiente() == nullptr) {
+        return;
+    }else {
+        if (nodo->getSiguiente()->ge Nota() == Nota && nodo->getSiguiente()->getAlumno() == Alumno && nodo->getSiguiente()->getRamo() == Ramo) {
+            Nodo* temp = nodo->getSiguiente();
+            nodo->setSiguiente(temp->getSiguiente());
+            delete temp;
+            return;
+        }else {
+            eliminarNodo(nodo->getSiguiente(), Nota, Alumno, Ramo);
+        }
     }
 }
